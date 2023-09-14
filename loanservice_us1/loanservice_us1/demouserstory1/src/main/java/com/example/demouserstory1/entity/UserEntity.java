@@ -3,6 +3,9 @@ package com.example.demouserstory1.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Getter
 @Setter
@@ -19,6 +22,14 @@ public class UserEntity {
     private String email;
     @Column(name="password")
     private String password;
+  /*  @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_books",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id")
+    )
+    private Set<Book> loaned = new HashSet<>();*/
+
 
     public Long getId() {
         return id;

@@ -1,9 +1,12 @@
 package com.example.demouserstory1.entity;
 
 import lombok.*;
+import org.apache.tomcat.jni.User;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -23,9 +26,10 @@ public class Book {
     @Column(nullable = false, unique = true)
     private String ISBN;
 
-
     @Column(name = "publication_date")
     private Date publicationDate;
+   /* @ManyToMany(mappedBy = "loaned")
+    private Set<User> users = new HashSet<>();*/
 
     public Long getId() {
         return id;

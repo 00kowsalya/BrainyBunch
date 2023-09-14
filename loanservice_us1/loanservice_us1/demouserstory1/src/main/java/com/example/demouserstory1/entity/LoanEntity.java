@@ -18,8 +18,7 @@ public class LoanEntity {
     private Long userId;
     private LocalDate issueDate;
     private LocalDate dueDate;
-    @ManyToOne
-    private UserEntity userEntity;
+
 
     @Enumerated(EnumType.STRING)
     private BookStatus Status = BookStatus.LOANED;

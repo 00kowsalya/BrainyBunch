@@ -32,10 +32,10 @@ public class LoanService {
 
     private BookStatus bookStatus;
 
-    public boolean isBookAvailableForLoan(Long bookId) {
+   /* public boolean isBookAvailableForLoan(Long bookId) {
         List<LoanEntity> loanedOrAvailableLoans = loanRepository.findByBookIdAndStatus(bookId, LOANED);
         return loanedOrAvailableLoans.isEmpty();
-    }
+    }*/
 
     // Other loan-related methods
 
@@ -44,8 +44,8 @@ public class LoanService {
         LoanEntity loanRecord = new LoanEntity();
         loanRecord.setUserId(loanRecordDTO.getUserId());
         loanRecord.setBookId(loanRecordDTO.getBookId());
-        loanRecord.setIssueDate(loanRecordDTO.getIssueDate());
-        loanRecord.setDueDate(loanRecordDTO.getDueDate());
+        loanRecord.setIssueDate(LocalDate.now());
+        loanRecord.setDueDate(LocalDate.now().plusDays(14));
         LoanEntity saveLoanRecord = loanRepository.save(loanRecord);
         return saveLoanRecord;
     }
@@ -79,6 +79,7 @@ public class LoanService {
             return ResponseEntity.ok(loanRepository.save(loanRecord));
         }
         return new ResponseEntity<>(new IllegalArgumentException("book is not available for loan or Exc"), HttpStatus.UNAUTHORIZED);
-
     }
+
+
 }

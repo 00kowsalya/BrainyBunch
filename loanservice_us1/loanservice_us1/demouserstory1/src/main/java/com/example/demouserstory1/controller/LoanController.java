@@ -24,7 +24,7 @@ public class LoanController {
         return loanService.issueBook(loanRecordDTO);
     }
 
-
+/*
     @GetMapping("/check-availablity")
     public ResponseEntity<String> checkAvailablityForLoan(@RequestBody LoanRecordDTO loanRecordDTO)
     {
@@ -34,7 +34,7 @@ public class LoanController {
             return ResponseEntity.badRequest().body("Book is not available for loan.");
 
         }
-    }
+    }*/
     @GetMapping("/users/{userId}")
     public List<LoanEntity> getLoanRecordsForUser(@PathVariable Long userId) {
         return loanService.getLoanRecords(userId);
